@@ -30,7 +30,25 @@ radius = pd.Series([2440, 6052, 6371, 3390, 69911, 58232, 25362, 24622])
 colour = pd.Series(["Grey", "Golden Brown", "Blue", "Red", "Yellow Brown Red", "Yellow Brown Grey", "Cyan", "Blue"])
 interesting_feat = pd.Series(["Not too hot for ice", "Moonless", "Habbitual", "Thicker atmosphere in the past", "Comet catcher", "Has rings", "Very Stormy", "Supersonic Winds"])
 
-planets_Df = pd.DataFrame([planet, temperature, radius, colour, interesting_feat])
-planets_Df = pd.concat([planet, temperature, radius, colour, interesting_feat], axis=1)
+planets_Df = pd.DataFrame({"Planet" : planet, 
+                           "Temp (C)" : temperature, 
+                           "Radius (km)" : radius, 
+                           "Colour" : colour,
+                            "Interesting Fact" : interesting_feat})
+
 planets_Df.columns = ["Planet", "Temp (C)", "Radius (km)", "Colour", "Interesting Fact"]
+
+planets_Df["Discovered"] = ["Thomas Harriet", "Galileo", "Humans", "Galileo", "Galileo", "Galileo", "William Herschel", "Johann Galle"]
+planets_Df["Year Discovered"] = [1610, 1610, 0, 1610, 1610, 1610, 1787, 1880]
+planets_Df["Elements"] = ["Nickel", "Carbon Dioxide", "Nitrogen", "Carbon Dioxide", "Hydrogen", "Hydrogen", "Methane", "Helium"]
+
+new_planet = pd.DataFrame({"Planet":["Pluto"], 
+                           "Temp (C)" : [-232],
+                            "Radius (km)"  : [1188], 
+                            "Colour": ["Red"], 
+                            "Interesting Fact" : ["Dwarf Planet"],
+                             "Discovered": ["Clyd Tombaugh"],
+                              "Year Discovered" : [1930], 
+                              "Elements" : ["Nitrogen"]})
+planets_Df = pd.concat([planets_Df,new_planet], ignore_index=True)
 print(planets_Df)
