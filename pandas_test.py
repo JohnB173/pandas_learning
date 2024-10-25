@@ -51,4 +51,7 @@ new_planet = pd.DataFrame({"Planet":["Pluto"],
                               "Year Discovered" : [1930], 
                               "Elements" : ["Nitrogen"]})
 planets_Df = pd.concat([planets_Df,new_planet], ignore_index=True)
-print(planets_Df)
+# print(planets_Df)
+
+# planets_Df.to_excel("Planets_DF.xlsx", index=False)
+print(planets_Df.loc[1:4])

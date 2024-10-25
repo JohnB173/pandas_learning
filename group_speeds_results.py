@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 df = pd.read_excel("group_results.xlsx")
 df = df.drop(columns=["Package (if known)"])
 df = df.set_index("Internet Service Provider")
-sorted_df = df.sort_values(by="Fastest Upload", ascending=False)
-sorted_df = df.sort_values(by="Fastest Upload", ascending=True)
-# print(sorted_df)
+sorted_df_ascending = df.sort_values(by="Fastest Upload", ascending=False)
+sorted_df_decending = df.sort_values(by="Fastest Upload", ascending=True)
+# print(sorted_df_decending)
 
 
 # mean_upl = df["Mean Upload"].mean()
@@ -39,6 +39,7 @@ plt.bar(df.index, df['Median Download'], color='green', label='Median Download S
 plt.axhline(y=national_avg_dl, color='red', linestyle='--', label='National Download Median')
 plt.title('Median DL Speed Comparison')
 plt.xticks(rotation=45)
+plt.ylabel("Mb/s")
 plt.legend()
 
 plt.subplot(2, 2, 2)
@@ -46,6 +47,7 @@ plt.bar(df.index, df['Median Upload'], color='blue', label='Median Upload Speed'
 plt.axhline(y=national_avg_upl, color='red', linestyle='--', label='National Upload Median')
 plt.title('Median Upload Speed Comparison')
 plt.xticks(rotation=45)
+plt.ylabel("Mb/s")
 plt.legend()
 
 plt.tight_layout()

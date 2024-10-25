@@ -22,7 +22,7 @@ df = pd.read_csv("results.csv")
 # Activity 1
 
 # print(df["tournament"].value_counts())
- # # 147 tournaments played from lowest 1 to highest 17773
+#  # 147 tournaments played from lowest 1 to highest 17773
 # unique_tournament = df["tournament"].unique()
 # # find different tournaments using .unique method
 # num_unique_tournament = len(unique_tournament)
@@ -36,9 +36,9 @@ df = pd.read_csv("results.csv")
 # print(matches_per_tournament_sorted)
 
 # print(df["home_team"].value_counts())
-# Brazil 600 home
+# # Brazil 600 home
 # print(df["away_team"].value_counts())
-# Uruguay 565
+# # Uruguay 565
 # print(df["home_team"].max())
 # print(df["away_team"].max())
 # Aland Islands
