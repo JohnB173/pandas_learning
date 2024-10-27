@@ -24,11 +24,11 @@ import numpy as np
 
 # Activity 1
 
-planet = pd.Series(["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
-temperature = pd.Series([167, 464, 15, -65, -110, -140, -195, -200])
-radius = pd.Series([2440, 6052, 6371, 3390, 69911, 58232, 25362, 24622])
-colour = pd.Series(["Grey", "Golden Brown", "Blue", "Red", "Yellow Brown Red", "Yellow Brown Grey", "Cyan", "Blue"])
-interesting_feat = pd.Series(["Not too hot for ice", "Moonless", "Habbitual", "Thicker atmosphere in the past", "Comet catcher", "Has rings", "Very Stormy", "Supersonic Winds"])
+planet = (["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"])
+temperature = ([167, 464, 15, -65, -110, -140, -195, -200])
+radius = ([2440, 6052, 6371, 3390, 69911, 58232, 25362, 24622])
+colour = (["Grey", "Golden Brown", "Blue", "Red", "Yellow Brown Red", "Yellow Brown Grey", "Cyan", "Blue"])
+interesting_feat = (["Not too hot for ice", "Moonless", "Habbitual", "Thicker atmosphere in the past", "Comet catcher", "Has rings", "Very Stormy", "Supersonic Winds"])
 
 planets_Df = pd.DataFrame({"Planet" : planet, 
                            "Temp (C)" : temperature, 
@@ -52,6 +52,17 @@ new_planet = pd.DataFrame({"Planet":["Pluto"],
                               "Elements" : ["Nitrogen"]})
 planets_Df = pd.concat([planets_Df,new_planet], ignore_index=True)
 # print(planets_Df)
-
 # planets_Df.to_excel("Planets_DF.xlsx", index=False)
-print(planets_Df.loc[1:4])
+# print(planets_Df.loc[1:4])
+planets_Df = planets_Df.set_index("Planet")
+user_input = input("What planet would you like to know more about?: ")
+if user_input in planets_Df.index:
+    print(f"Great! Lets explore {user_input}!")
+    print("'Planet' -- 'Temp (C)' -- 'Radius (km)' -- 'Colour' -- 'Interesting Fact'")
+    specific_column = input("Please type in one of these for more information, or type 'all' for everything: ")
+    if specific_column == "all":
+        print(planets_Df.loc[user_input])
+    elif specific_column in planets_Df.columns:    
+        print(f"{specific_column} for {user_input}: {planets_Df.at[user_input, specific_column]}")
+else:
+    print("Not found in Database")
