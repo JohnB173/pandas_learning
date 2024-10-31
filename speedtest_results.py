@@ -1,9 +1,12 @@
 import pandas as pd
 
 df = pd.read_excel("results2024-10-24-159.xlsx")
-
-# sorted_df = df.sort_values(by="Upload (Mb/s)", ascending=False)
+# print(df.info())
+# print(df.describe())
+df = df.drop(columns=["Unnamed: 0"])
+sorted_df = df.sort_values(by="Upload (Mb/s)", ascending=False)
 # print(sorted_df)
+
 
 mean_dl = df["Download (Mb/s)"].mean()
 # print(mean_dl)
@@ -41,3 +44,5 @@ median_upl = df["Upload (Mb/s)"].median()
 # slow_upload = df["Upload (Mb/s)"].min()
 # print(slow_upload)
 # # 12.10 --------
+
+# sorted_df.to_excel("My_Net_Speed_Results.xlsx", index=False)
