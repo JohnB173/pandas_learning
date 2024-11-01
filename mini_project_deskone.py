@@ -12,6 +12,27 @@ df = pd.concat([monday_df , tuesday_df , wednesday_df , thursday_df , friday_df 
 # print(df.info())
 # print(df.describe())
 
-df = df.dropna(how="any")
-df = df.set_index("Transaction ID")
-print(df)
+
+# print(df)
+
+df["New Transaction ID"] = range(1, len(df["Transaction ID"])+1)
+# print(df)
+
+df = df.set_index("New Transaction ID")
+df = df.dropna(how = "any")
+# print(df)
+df = df.drop(columns=["Transaction ID", "Staff", "Transaction Type"])
+
+def split_basket(string):
+    items = string.split(",")
+    stripped_items = [item.strip() for item in items]
+    return stripped_items
+
+df["Basket"] = df["Basket"].apply(split_basket)
+
+# print(df.head(5))
+# print(df.describe())
+# print(df.info())
+
+exploded_data_df = df.explode("Basket", ignore_index=False) 
+print(exploded_data_df["Basket"])
